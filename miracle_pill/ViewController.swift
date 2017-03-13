@@ -12,6 +12,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 
     @IBOutlet weak var statePicker: UIPickerView!
     @IBOutlet weak var statePickerBtn: UIButton!
+  
+    @IBOutlet weak var postcodeLabel: UILabel!
+    @IBOutlet weak var postcodeText: UITextField!
+    
+    @IBOutlet weak var cntryLabel: UILabel!
+    @IBOutlet weak var cntryText: UITextField!
     
     let states = ["ACT","SA","NSW","NT","QLD","VIC"]
     
@@ -27,6 +33,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
 
     @IBAction func stateBtnPressed(_ sender: Any) {
+        //hide the two labels and text fields above the state picker
+        postcodeLabel.isHidden = true
+        postcodeText.isHidden = true
+        cntryLabel.isHidden = true
+        cntryText.isHidden = true
+        
         
         statePicker.isHidden = false //i.e.unhide the statepicker
         
@@ -48,7 +60,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         statePickerBtn.setTitle(states[row], for: UIControlState.normal) //changes the button to whatever is selected in the picker
         statePicker.isHidden = true //re-hide the state picker once selected
+        
+        //unhide the two labels and text fields above the state picker
+        postcodeLabel.isHidden = false
+        postcodeText.isHidden = false
+        cntryLabel.isHidden = false
+        cntryText.isHidden = false
     }
     
+    @IBAction func buyNowBtnPressed(_ sender: Any) {
+    }
 }
 
